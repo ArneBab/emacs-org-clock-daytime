@@ -49,7 +49,7 @@
     (setq org-total-time--last-res
             (format " [%s] "
                     (org-duration-from-minutes
-                     (apply '+ (mapcar
+                     (apply #'+ (mapcar
                                 (lambda (current-file)
                                   (with-current-buffer
                                       (find-file-noselect current-file)
