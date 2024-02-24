@@ -55,14 +55,8 @@
       org-total-time--last-res))
 
 (define-minor-mode org-clock-agenda-daytime-mode
-  "Toggle display of volume in mode lines.
-
-Depends on desktop-environment.
-
-When Display Time mode is enabled, it queries the volume from
-your system on every displaying using
-`desktop-environment-volume-get' (which you can customize)."
-  :global t :group 'desktop-environment
+  "Toggle display of the total time clocked today in the modeline."
+  :global t :group 'org-clock
   (or global-mode-string (setq global-mode-string '("")))
   (setq org-clock-agenda-daytime-modeline-entry
         '(:eval (org-total-time)))
