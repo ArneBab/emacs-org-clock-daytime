@@ -28,6 +28,9 @@
 
 ;; Enable the mode with (org-clock-agenda-daytime-mode 1).
 
+;; The time calculation caches results for one minute to avoid slowing
+;; down interaction.
+
 ;;; Code:
 
 ;; add total task time from plan.org to modeline
