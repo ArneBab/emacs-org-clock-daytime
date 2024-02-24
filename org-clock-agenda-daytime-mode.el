@@ -1,4 +1,4 @@
-;;; org-clock-agenda-daytime-mode --- display the time clocked today in the modeline
+;;; org-clock-agenda-daytime-mode --- display the time clocked today in the modeline -*- lexical-binding: t -*-
 
 ;; Copyright (C) 2024 Arne Babenhauserheide
 ;; Keywords: org, lisp, clock, time, agenda
@@ -61,7 +61,7 @@ Depends on desktop-environment.
 
 When Display Time mode is enabled, it queries the volume from
 your system on every displaying using
-desktop-environment-volume-get (which you can customize)."
+`desktop-environment-volume-get' (which you can customize)."
   :global t :group 'desktop-environment
   (or global-mode-string (setq global-mode-string '("")))
   (setq org-clock-agenda-daytime-modeline-entry
