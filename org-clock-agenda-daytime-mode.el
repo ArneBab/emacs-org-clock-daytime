@@ -4,7 +4,7 @@
 
 ;; Author: Arne Babenhauserheide <arne_bab@web.de>
 ;; Keywords: org, lisp, clock, time, agenda
-;; Version: 0.0.2
+;; Version: 0.0.3
 ;; Package-Requires: ((org "9.6.18") (emacs "26.1"))
 ;; URL: https://www.draketo.de/software/emacs-daytime
 
@@ -42,6 +42,12 @@
 ;; The time calculation caches results for one minute to avoid slowing
 ;; down interaction.
 
+;;; Changelog:
+
+;; - 0.0.1 initial version
+;; - 0.0.2 add customizable highlighting of target and maximum time
+;; - 0.0.3 use proper variable names (thanks to Visuwesh!)
+
 ;;; Code:
 
 ;; add total task time from plan.org to modeline
@@ -57,7 +63,7 @@
  like `(+ 24 (* 60 7))' for a 37 hour week"
   :group 'org-clock
   :type '(natnum sexp))
-(defcustom org-clock-agenda-daytime--maximum-work-time-minutes (* 60 10)
+(defcustom org-clock-agenda-daytime-maximum-work-time-minutes (* 60 10)
   "The daily worktime is marked as too long after this many minutes.
 
 You can use a sexp like `(* 60 10)' to specify the minutes more
@@ -68,7 +74,7 @@ You can use a sexp like `(* 60 10)' to specify the minutes more
   "The face to use to mark the modeline entry when the target time is reached."
   :group 'org-clock
   :type 'face)
-(defcustom org-clock-agenda-daytime--maximum-work-time-reached-face 'org-mode-line-clock-overrun
+(defcustom org-clock-agenda-daytime-maximum-work-time-reached-face 'org-mode-line-clock-overrun
   "The face to use to mark the modeline entry when the maximmum time is reached."
   :group 'org-clock
   :type 'face)
@@ -94,14 +100,14 @@ You can use a sexp like `(* 60 10)' to specify the minutes more
             (cond
              ((> org-clock-agenda-daytime-target-work-time-minutes daytime-minutes)
               text)
-             ((> org-clock-agenda-daytime--maximum-work-time-minutes daytime-minutes)
+             ((> org-clock-agenda-daytime-maximum-work-time-minutes daytime-minutes)
               (propertize text
                           'face
                           org-clock-agenda-daytime-target-work-time-reached-face))
              (t
               (propertize text
                           'face
-                          org-clock-agenda-daytime--maximum-work-time-reached-face)))))))
+                          org-clock-agenda-daytime-maximum-work-time-reached-face)))))))
 
 ;;;###autoload
 (define-minor-mode org-clock-agenda-daytime-mode
