@@ -49,7 +49,7 @@
 (defvar org-clock-agenda-daytime--last-res "")
 (defvar org-clock-agenda-daytime-modeline-entry)
 
-(defcustom org-clock-agenda-daytime--target-work-time-minutes (* 60 8)
+(defcustom org-clock-agenda-daytime-target-work-time-minutes (* 60 8)
   "The daily worktime is marked as enough after this many minutes.
 
  To specify the minutes more conveniently you can use a simple
@@ -64,7 +64,7 @@ You can use a sexp like `(* 60 10)' to specify the minutes more
  conveniently."
   :group 'org-clock
   :type '(natnum sexp))
-(defcustom org-clock-agenda-daytime--target-work-time-reached-face 'org-done
+(defcustom org-clock-agenda-daytime-target-work-time-reached-face 'org-done
   "The face to use to mark the modeline entry when the target time is reached."
   :group 'org-clock
   :type 'face)
@@ -92,12 +92,12 @@ You can use a sexp like `(* 60 10)' to specify the minutes more
                          (org-duration-from-minutes daytime-minutes))))
       (setq org-clock-agenda-daytime--last-res
             (cond
-             ((> org-clock-agenda-daytime--target-work-time-minutes daytime-minutes)
+             ((> org-clock-agenda-daytime-target-work-time-minutes daytime-minutes)
               text)
              ((> org-clock-agenda-daytime--maximum-work-time-minutes daytime-minutes)
               (propertize text
                           'face
-                          org-clock-agenda-daytime--target-work-time-reached-face))
+                          org-clock-agenda-daytime-target-work-time-reached-face))
              (t
               (propertize text
                           'face
